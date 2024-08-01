@@ -3,9 +3,12 @@
 <package format="3">
   <name>roboticpark_cyberattacks</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>Package dedicated to launch attacks against other systems</description>
   <maintainer email="r-a-c@users.noreply.github.com">raul</maintainer>
-  <license>TODO: License declaration</license>
+  <license>GPL-3.0-only</license>
+
+<depend>rclpy</depend>
+<depend>RoboticPark</depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

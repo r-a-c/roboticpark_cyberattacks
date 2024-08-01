@@ -1,5 +1,16 @@
+import rclpy
+from rclpy.node import Node
+
+class dosnode(Node):
+    def __init__(self):
+        super().__init__("dosnode")
+
+
 def main():
-    print('Hi from roboticpark_cyberattacks.')
+    rclpy.init()
+    mydosnode = dosnode()
+    rclpy.spin(mydosnode)
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':

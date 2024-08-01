@@ -15,8 +15,8 @@ setup(
     zip_safe=True,
     maintainer='raul',
     maintainer_email='r-a-c@users.noreply.github.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='Package dedicated to launch attacks against other systems',
+    license='GPL-3.0-only',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
