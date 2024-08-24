@@ -1,3 +1,0 @@
-[console_scripts]
-dosattack = roboticpark_cyberattacks.dosattack:main
-

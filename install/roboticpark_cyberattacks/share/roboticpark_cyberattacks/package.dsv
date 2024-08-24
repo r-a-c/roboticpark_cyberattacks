@@ -1,6 +1,0 @@
-source;share/roboticpark_cyberattacks/hook/pythonpath.ps1
-source;share/roboticpark_cyberattacks/hook/pythonpath.dsv
-source;share/roboticpark_cyberattacks/hook/pythonpath.sh
-source;share/roboticpark_cyberattacks/hook/ament_prefix_path.ps1
-source;share/roboticpark_cyberattacks/hook/ament_prefix_path.dsv
-source;share/roboticpark_cyberattacks/hook/ament_prefix_path.sh
