@@ -102,9 +102,11 @@ def dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,workers):
     request = dosObjectiveClass.Request()
 
     while True:
-        print(nodeObjectiveServer)
+        # print(nodeObjectiveServer)
+        # print(workers)
+        # print(int(workers))
         with concurrent.futures.ThreadPoolExecutor(max_workers=int(workers)) as executor:
-            for _ in workers:
+            for _ in range(int(workers)):
                 futures.append(executor.submit(dosFillServiceAux,sclient=sclient,request=request))
 
 def dosFillServiceAux(sclient,request):
