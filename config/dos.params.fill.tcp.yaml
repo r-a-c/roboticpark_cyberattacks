@@ -1,0 +1,5 @@
+dosnode:
+  ros__parameters:
+    dos_type: 'garbage'
+    dos_ip_objective: '127.0.0.1'
+    dos_protocol: 'tcp'

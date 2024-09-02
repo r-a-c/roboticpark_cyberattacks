@@ -1,0 +1,3 @@
+dosnode:
+  ros__parameters:
+    dos_node_objective: "dosnode"
