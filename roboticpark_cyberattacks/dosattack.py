@@ -127,8 +127,8 @@ def main():
 
     if ipobjectiveParam == 'Unset':
         checkService(mydosnode)
-        mydosnode.get_logger().info(f'We try to fill any of the services:  {dosnodename} was chosen')
-        nodeParamList = mydosnode.get_service_names_and_types()
+        mydosnode.get_logger().info(f'We try to fill any of the servi(ces:  {dosnodename} was chosen')
+        nodeParamList = mydosnode.get_service_names_and_types_by_node(dosnodename,'')
 
         # We choose a random service
         nodeParam = random.choice(nodeParamList)
