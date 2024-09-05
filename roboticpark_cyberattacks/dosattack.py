@@ -19,7 +19,7 @@ class dosnode(Node):
         self.declare_parameter('dos_node_objective', "Unset")
         self.declare_parameter('dos_type', 'Unset')
         self.declare_parameter('dos_protocol', 'tcp')
-        self.declare_parameter('dos_ping_workers', '1000')
+        self.declare_parameter('dos_workers', '1000')
 
 def printargs(node):
     """Prints every param present in the node and its values
@@ -123,7 +123,7 @@ def main():
     ipobjectiveParam = mydosnode.get_parameter('dos_ip_objective')._value
     dostype = mydosnode.get_parameter('dos_type')._value
     dosprotocol = mydosnode.get_parameter('dos_protocol')._value
-    dospingworkers = mydosnode.get_parameter('dos_ping_workers')._value
+    dosworkers = mydosnode.get_parameter('dos_workers')._value
     dosnodename = mydosnode.get_parameter('dos_node_objective')._value
     portrange = range(1, 65535)  # Scan ports
 
@@ -155,7 +155,7 @@ def main():
             nodeObjectiveServer = nodeParam[0]
             nodeObjectiveType = nodeParam[1][0]
             rslg(mydosnode,f'Servicio {nodeObjectiveServer} Tipo de parámetro {nodeObjectiveType}')
-            dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,dospingworkers)
+            dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,dosworkers)
         except Exception as e:
             rslg(mydosnode,f'No service available in this node {e}')
             sys.exit()
@@ -175,9 +175,9 @@ def main():
                     dosSendRandomGarbageUDP(ipobjectiveParam,mydosnode,scan_udp_ports(ipobjectiveParam,portrange),socket.SOCK_DGRAM)
         else:
             if dostype == 'dos_ping_bruteforce':
-                rslg(mydosnode,f'Bruteforcing w {dospingworkers}')
+                rslg(mydosnode,f'Bruteforcing w {dosworkers}')
                 try:
-                    dosSendPing(ipobjectiveParam,dospingworkers)
+                    dosSendPing(ipobjectiveParam,dosworkers)
                 except Exception as e:
                     print(f"Ping Error:{e}")
 
