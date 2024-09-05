@@ -1,4 +1,4 @@
 dosnode:
   ros__parameters:
-    dos_type: 'bruteforce'
+    dos_type: 'dos_ping_bruteforce'
     dos_ip_objective: '127.0.0.1'

