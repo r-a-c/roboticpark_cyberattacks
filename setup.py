@@ -23,7 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'dosattack = roboticpark_cyberattacks.dosattack:main'
+            'dosattack = roboticpark_cyberattacks.dosattack:main',
+            'logcapturer = roboticpark_cyberattacks.logcapturer:main'
         ],
     },
 )
