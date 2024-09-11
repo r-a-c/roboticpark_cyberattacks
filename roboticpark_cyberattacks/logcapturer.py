@@ -17,18 +17,20 @@ class logcapturer(Node):
         # Create Log File
         topic_name = self.get_parameter('topic_to_log')._value
         log_file_name = f"{topic_name}_log_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
+        log_file_name = log_file_name.replace("/","_")
         self.log_file_path = os.path.join(os.getcwd(), log_file_name)
         rslg(self,f" Writing info from '{topic_name}' in {self.log_file_path}")
     
     def loggerToFile(self,msg):
         with open(self.log_file_path, 'a') as log_file:
-            log_file.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg.data}\n")
+            log_file.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}\n")
             rslg(self,f"Mensaje recibido: {msg}")
 #        self.get_logger().info(f"Mensaje recibido: {msg}")
 
 def import_message_type(node,msg_type_str):
     try:
-        package_name, msg_name = msg_type_str.split("/")
+        package_name, msg_name = msg_type_str.split("/",1)
+        msg, msg_name = msg_name.split("/",1)
         module = importlib.import_module(f"{package_name}.msg")
         return getattr(module, msg_name)
     except Exception as e:
@@ -36,7 +38,7 @@ def import_message_type(node,msg_type_str):
         return None
 
 def subscribe_to_topic(node,topic,msg_type):
-        node.subscription = node.create_subscription( msg_type, topic, node.loggerToFile, 10)
+    node.subscription = node.create_subscription( msg_type, topic, node.loggerToFile, 10)
 
 def main():
     rclpy.init()
@@ -51,7 +53,7 @@ def main():
         sys.exit()
 
     topicType = import_message_type(mylogcapturer,topicToLogType)
-
+    
     if topicType == None:
         rslg(mylogcapturer,'Problem obtaining the type of the topic')
         sys.exit()
