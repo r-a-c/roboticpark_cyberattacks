@@ -1,0 +1,4 @@
+logcapturer:
+  ros__parameters:
+    topic_to_log: '/dron14/gps'
+    topic_to_log_type: 'geometry_msgs/msg/PointStamped'
