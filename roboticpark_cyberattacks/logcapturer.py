@@ -24,8 +24,8 @@ class logcapturer(Node):
     def loggerToFile(self,msg):
         with open(self.log_file_path, 'a') as log_file:
             log_file.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}\n")
-            rslg(self,f"Mensaje recibido: {msg}")
-#        self.get_logger().info(f"Mensaje recibido: {msg}")
+    #        rslg(self,f"Mensaje recibido: {msg}")
+
 
 def import_message_type(node,msg_type_str):
     try:

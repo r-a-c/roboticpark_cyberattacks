@@ -12,4 +12,11 @@ def generate_launch_description():
             name='dosnode',
             parameters=[os.path.join(get_package_share_directory('roboticpark_cyberattacks'), 'config', 'dos.params.fill.udp.yaml')]
         ),
+        Node(
+            package='roboticpark_cyberattacks',
+#           namespace='dos',
+            executable='logcapturer',
+            name='logcapturer',
+            parameters=[os.path.join(get_package_share_directory('roboticpark_cyberattacks'), 'config', 'logcapturer.params.yaml')]
+        ),
     ])
