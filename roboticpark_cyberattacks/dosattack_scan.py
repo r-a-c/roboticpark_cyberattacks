@@ -29,11 +29,13 @@ def scan_udp_ports(ip, ports):
 
 def scan_udp_port(ip, port):
     with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-        s.settimeout(0.5)
+        s.settimeout(10.0)
         try:
             s.sendto(b'', (ip, port))
             s.recvfrom(1024)
             return port
-        except (socket.timeout, socket.error):
-            pass
+        except socket.timeout:
+            print(f"Timeout  {port}")
+        except socket.error as e:
+            print(f"Socket error  {port}: {e}")
     return None

