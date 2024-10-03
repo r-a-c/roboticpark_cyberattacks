@@ -1,5 +1,5 @@
 import rclpy, sys
-from rclpy.node import Node
+from rclpy.node import Node, NodeNameNonExistentError
 from rclpy import Parameter
 from std_srvs.srv import Empty
 from rcl_interfaces.srv import GetParameters
@@ -133,30 +133,28 @@ def main():
     portrange = range(1, 65535)  # Scan ports
     portrangeudp = range(1, 1024)  # Scan ports
 
-
     # In ROS2 there is no mode right now of getting the ip of the node which manages a node. so we are going to take a parameter to get the ip
     # TODO: Maybe I should try DDS with python to get the ip of a node.
-    
-    # We will have two DOS modes
-    # 1.- We will dos the host by ip. network layer. We need to provide the ip or the host.
-    # Two types: typical ping attack. And port filling attack. The port filling attack scans for open operts and then try to fill them with garbage
-
-    # 2.- We will try to fill the ros node's topics to make it to fail. 
-
     # How to invoke them
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.ping.yaml 
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.fill.tcp.yaml 
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.fill.udp.yaml 
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.ros2.fill.yaml 
 
-
     if ipobjectiveParam == 'Unset':
         checkService(mydosnode)
-        mydosnode.get_logger().info(f'We try to fill any of the servi(ces:  {dosnodename} was chosen')
-        nodeParamList = mydosnode.get_service_names_and_types_by_node(dosnodename,'')
+        rslg(mydosnode,f'We try to fill any of the servi(ces:  {dosnodename} was chosen')
+        nodeServiceList = []
+        try:
+            nodeServiceList = mydosnode.get_service_names_and_types_by_node(dosnodename,'')
+        except NodeNameNonExistentError as e:
+            rslg(mydosnode,f'Service list: {nodeServiceList}')
+            rslg(mydosnode,f'No node with that name {e}')
+            sys.exit()
+
 
         # We choose a random service
-        nodeParam = random.choice(nodeParamList)
+        nodeParam = random.choice(nodeServiceList)
         try:
             nodeObjectiveServer = nodeParam[0]
             nodeObjectiveType = nodeParam[1][0]

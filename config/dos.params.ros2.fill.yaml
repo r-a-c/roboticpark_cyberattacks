@@ -1,3 +1,4 @@
 dosnode:
   ros__parameters:
-    dos_node_objective: "dosnode"
+    dos_node_objective: "dron14"
+    dos_workers: "10000"
