@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module dosattack_scan</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>dosattack_scan</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/raul/roboticpark_ws/src/roboticpark_cyberattacks/roboticpark_cyberattacks/dosattack_scan.py">/home/raul/roboticpark_ws/src/roboticpark_cyberattacks/roboticpark_cyberattacks/dosattack_scan.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="concurrent.html">concurrent</a><br>
+</td><td width="25%" valign=top><a href="socket.html">socket</a><br>
+</td><td width="25%" valign=top><a href="threading.html">threading</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-scan_tcp_ports"><strong>scan_tcp_ports</strong></a>(ip, ports)</dt><dd><tt>Searchs&nbsp;for&nbsp;TCP&nbsp;open&nbsp;ports&nbsp;against&nbsp;a&nbsp;machine<br>
+&nbsp;<br>
+Parameters:<br>
+ip:&nbsp;String,&nbsp;The&nbsp;ip&nbsp;to&nbsp;attack&nbsp;to.<br>
+ports:&nbsp;List,&nbsp;A&nbsp;list&nbsp;of&nbsp;ports<br>
+&nbsp;<br>
+Returns:&nbsp;<br>
+List,&nbsp;a&nbsp;list&nbsp;of&nbsp;open&nbsp;ports.</tt></dd></dl>
+ <dl><dt><a name="-scan_udp_port"><strong>scan_udp_port</strong></a>(ip, port)</dt><dd><tt>Searchs&nbsp;for&nbsp;UDP&nbsp;open&nbsp;ports&nbsp;against&nbsp;a&nbsp;machine.&nbsp;This&nbsp;functions&nbsp;makes&nbsp;the&nbsp;actual&nbsp;work.<br>
+&nbsp;<br>
+Parameters:<br>
+ip:&nbsp;String,&nbsp;The&nbsp;ip&nbsp;to&nbsp;attack&nbsp;to.<br>
+port:&nbsp;String,&nbsp;the&nbsp;actual&nbsp;port&nbsp;scanned.<br>
+&nbsp;<br>
+Returns:&nbsp;<br>
+None&nbsp;if&nbsp;no&nbsp;response,&nbsp;else&nbsp;the&nbsp;port&nbsp;String.</tt></dd></dl>
+ <dl><dt><a name="-scan_udp_ports"><strong>scan_udp_ports</strong></a>(ip, ports)</dt><dd><tt>Searchs&nbsp;for&nbsp;UDP&nbsp;open&nbsp;ports&nbsp;against&nbsp;a&nbsp;machine.&nbsp;This&nbsp;functions&nbsp;organizes&nbsp;the&nbsp;work.<br>
+&nbsp;<br>
+Parameters:<br>
+ip:&nbsp;String,&nbsp;The&nbsp;ip&nbsp;to&nbsp;attack&nbsp;to.<br>
+ports:&nbsp;List,&nbsp;A&nbsp;list&nbsp;of&nbsp;ports<br>
+&nbsp;<br>
+Returns:&nbsp;<br>
+List,&nbsp;a&nbsp;list&nbsp;of&nbsp;open&nbsp;ports.</tt></dd></dl>
+</td></tr></table>
+</body></html>

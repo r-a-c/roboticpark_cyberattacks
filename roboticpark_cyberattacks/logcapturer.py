@@ -28,6 +28,17 @@ class logcapturer(Node):
 
 
 def import_message_type(node,msg_type_str):
+    """This function searchs for the class object needed accoding to the params. 
+
+       Parameters:
+
+       node: Node, the node used to perform the activities.
+       msg_type_str: String, the type of the messagge, as a string. 
+
+       Returns:
+
+       None if no class if found else the objective class.
+    """
     try:
         package_name, msg_name = msg_type_str.split("/",1)
         msg, msg_name = msg_name.split("/",1)
@@ -38,6 +49,15 @@ def import_message_type(node,msg_type_str):
         return None
 
 def subscribe_to_topic(node,topic,msg_type):
+    """This function  subscribes a node to a topi 
+
+       Parameters:
+
+       node: Node, the node used to perform the activities.
+       topic: String, the topic to subscribe.
+       msg_type: Type of the messagge will be subscribed.
+
+    """
     node.subscription = node.create_subscription( msg_type, topic, node.loggerToFile, 10)
 
 def main():
