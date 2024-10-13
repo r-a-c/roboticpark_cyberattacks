@@ -25,7 +25,8 @@ setup(
     entry_points={
         'console_scripts': [
             'dosattack = roboticpark_cyberattacks.dosattack:main',
-            'logcapturer = roboticpark_cyberattacks.logcapturer:main'
+            'logcapturer = roboticpark_cyberattacks.logcapturer:main',
+            'replyattack = roboticpark_cyberattacks.replyattack:main'
         ],
     },
 )

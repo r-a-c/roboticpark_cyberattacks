@@ -1,0 +1,4 @@
+replynode:
+  ros__parameters:
+    reply_topic: "dron14"
+    reply_amount: "12000"
