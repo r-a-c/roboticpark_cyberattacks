@@ -3,7 +3,7 @@ from rclpy.node import Node
 import importlib
 from std_srvs.srv import Empty
 from rcl_interfaces.srv import GetParameters
-from roboticpark_cyberattacks.utils import rslg
+from roboticpark_cyberattacks.utils import rslg,import_message_type
 from rcl_interfaces.srv import *
 from datetime import datetime
 
@@ -25,28 +25,6 @@ class logcapturer(Node):
         with open(self.log_file_path, 'a') as log_file:
             log_file.write(f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}\n")
     #        rslg(self,f"Mensaje recibido: {msg}")
-
-
-def import_message_type(node,msg_type_str):
-    """This function searchs for the class object needed accoding to the params. 
-
-       Parameters:
-
-       node: Node, the node used to perform the activities.
-       msg_type_str: String, the type of the messagge, as a string. 
-
-       Returns:
-
-       None if no class if found else the objective class.
-    """
-    try:
-        package_name, msg_name = msg_type_str.split("/",1)
-        msg, msg_name = msg_name.split("/",1)
-        module = importlib.import_module(f"{package_name}.msg")
-        return getattr(module, msg_name)
-    except Exception as e:
-        rslg(node,f"Problem with the type '{msg_type_str}': {e}")
-        return None
 
 def subscribe_to_topic(node,topic,msg_type):
     """This function  subscribes a node to a topi 

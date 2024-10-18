@@ -9,6 +9,7 @@ def generate_launch_description():
             package='roboticpark_cyberattacks',
             executable='replyattack',
             name='replynode',
+            output='screen',
             parameters=[os.path.join(get_package_share_directory('roboticpark_cyberattacks'), 'config', 'reply.params.topic.yaml')]
         ),
     ])

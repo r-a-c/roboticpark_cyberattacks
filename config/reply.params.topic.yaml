@@ -1,5 +1,5 @@
 replynode:
   ros__parameters:
-    reply_topic: "/dron15/local_pose"
+    reply_topic: "/dron08/local_pose"
     reply_topic_type: "geometry_msgs/msg/PoseStamped"
-    reply_amount: "10"
+    reply_amount: "30"
