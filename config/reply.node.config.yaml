@@ -1,0 +1,64 @@
+
+Robots:
+  Robot08:
+    type: virtual
+    name: dron08
+    control_mode: HighLevel
+    positioning: Intern
+    pose: 1.31 -1.22
+    uri: radio://0/80/2M/E7E7E7E708
+    controller:
+      type: pid
+      enable: True
+      protocol: Continuous
+      period: 0.01
+      threshold:
+        type: Constant
+        co: 0.01
+        ai: 0.0
+    communication:
+      type: EventBased
+      threshold:
+        type: Constant
+        co: 0.01
+        ai: 0.0
+    local_pose:
+      enable: True
+      path: False
+      T: 100
+    local_twist:
+      enable: False
+      T: 20
+    data_attitude:
+      enable: False
+      T: 20
+    data_rate: 
+      enable: False
+      T: 20
+    data_motor: 
+      enable: False
+      T: 20
+    data:
+      enable: False
+      T: 20
+    mars_data:
+      enable: True
+      T: 50
+    task: 
+      enable: True
+      T: 100
+      Onboard: False
+      controller:
+        type: gradient
+        protocol: Continuous
+        period: 0.1
+        upperLimit: 0.1
+        lowerLimit: -0.1
+        gain: 0.25
+        threshold:
+            type: Constant
+            co: 0.01
+            ai: 0.0
+      role: consensus
+      type: distance
+      relationship: dron01_0.91844, dron07_0.91844, dron09_0.84904, dron14_0.41897, origin_1.0

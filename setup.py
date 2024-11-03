@@ -26,7 +26,8 @@ setup(
         'console_scripts': [
             'dosattack = roboticpark_cyberattacks.dosattack:main',
             'logcapturer = roboticpark_cyberattacks.logcapturer:main',
-            'replyattack = roboticpark_cyberattacks.replyattack:main'
+            'replyattack = roboticpark_cyberattacks.replyattack:main',
+            'replyattack_fake_node = roboticpark_cyberattacks.replyattack_fake_node:main'
         ],
     },
 )
