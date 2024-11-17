@@ -2,5 +2,5 @@ fdianode:
   ros__parameters:
     fdia_topic: "/dron15/range_left"
     fdia_frame_id: "range_left"
-    fdia_range_start: 1.2
-    fdia_range_end: 1.6
+    fdia_range_start: 2.0
+    fdia_range_end: 2.5

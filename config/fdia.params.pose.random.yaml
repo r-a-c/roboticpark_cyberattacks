@@ -1,0 +1,13 @@
+fdianode:
+  ros__parameters:
+    fdia_topic: "/dron15/local_pose"
+    fdia_frame_id: "map"
+    fdia_range_start: 2.0
+    fdia_range_end: 2.1
+    fdia_posx: 0.0006787714049510264
+    fdia_posy: 0.002547742619394028
+    fdia_posz: 0.9913706360104921
+    fdia_orx: 0.0004992781902168344
+    fdia_ory: -0.0006392435607701439
+    fdia_orz: 0.00033682343100241256
+    fdia_orw: 0.9999996143193932

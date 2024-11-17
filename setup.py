@@ -28,7 +28,8 @@ setup(
             'logcapturer = roboticpark_cyberattacks.logcapturer:main',
             'replyattack = roboticpark_cyberattacks.replyattack:main',
             'replyattack_fake_node = roboticpark_cyberattacks.replyattack_fake_node:main',
-            'fdiaattack =  roboticpark_cyberattacks.fdiaattack:main'
+            'fdiaattack_range =  roboticpark_cyberattacks.fdiaattack_range:main',
+            'fdiaattack_pose =  roboticpark_cyberattacks.fdiaattack_pose:main',
         ],
     },
 )

@@ -8,8 +8,8 @@ def generate_launch_description():
         Node(
             package='roboticpark_cyberattacks',
 #           namespace='dos',
-            executable='fdiaattack',
+            executable='fdiaattack_pose',
             name='fdianode',
-            parameters=[os.path.join(get_package_share_directory('roboticpark_cyberattacks'), 'config', 'fdia.params.random.yaml')]
+            parameters=[os.path.join(get_package_share_directory('roboticpark_cyberattacks'), 'config', 'fdia.params.pose.random.yaml')]
         ),
     ])

