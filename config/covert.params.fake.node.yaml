@@ -1,0 +1,3 @@
+covertnodefakenode:
+  ros__parameters:
+    reply_node_impersonate_name: "dron08"
