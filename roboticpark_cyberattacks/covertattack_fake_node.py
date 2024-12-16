@@ -52,7 +52,6 @@ class covertnodeFake(Node):
                                 'use_sim_time': False,
                                 'set_robot_state_publisher': True},
                             ],
-                            remappings= [ ('asdfasdf', 'adsfasdfasd'),('/dron08/local_pose', '/dron08/myypose'),('local_pose', 'myypose')],
                             respawn=True
                         )
 

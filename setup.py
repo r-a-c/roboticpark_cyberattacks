@@ -31,6 +31,7 @@ setup(
             'fdiaattack_range =  roboticpark_cyberattacks.fdiaattack_range:main',
             'fdiaattack_pose =  roboticpark_cyberattacks.fdiaattack_pose:main',
             'covertattack_fake_node = roboticpark_cyberattacks.replyattack_fake_node:main',
+            'sparseattack = roboticpark_cyberattacks.sparseattack:main',
         ],
     },
 )

@@ -1,0 +1,11 @@
+sparsenode:
+  ros__parameters:
+    sparse_topics: "/dron08/local_pose,/dron06/local_pose,/dron02/local_pose,/dron12/local_pose,"
+    sparse_topics_type: "geometry_msgs/msg/PoseStamped,geometry_msgs/msg/PoseStamped,geometry_msgs/msg/PoseStamped,geometry_msgs/msg/PoseStamped"
+    sparse_frame_id: "map"
+    sparse_double_range_start: -10.0
+    sparse_double_range_end: 20.0
+    sparse_int_range_start: 0
+    sparse_int_range_end: 20
+    sparse_time_range_start: 5
+    sparse_time_range_end: 15
