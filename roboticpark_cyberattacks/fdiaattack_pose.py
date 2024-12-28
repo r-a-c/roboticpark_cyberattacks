@@ -68,6 +68,13 @@ class fdianode(Node):
         
 
     def fdiainjectbridge(self, request, response):
+        """This function  acts as a brige to launch the new process via threading
+
+        Parameters:
+            request: Dict, the request
+            response:  Dict, the response
+
+        """
         response.message = f"Successfully launching random attack"
 
         threading.Thread(target=self.fdiainject).start()
@@ -79,32 +86,35 @@ class fdianode(Node):
 
 
     def fdiainject(self):
-        """This function  injects messagges into one topic, decided by the user who invokes the node
+        """
+        Injects messages into a topic chosen by the user.
+        
+        This function  injects messagges into one topic, decided by the user who invokes the node
         However, this function is no portable. It will send always the same type of message: geometry_msgs/PoseStamped Message
 
-        Parameters:
+        DataExample:
+            The following is an example of the message data sent by this function:
 
-        self: Node, the node used to perform the activities.
+            .. code-block:: yaml
+                
+                header:
+                    stamp:
+                        sec: 1731787676
+                        nanosec: 314306003
+                    frame_id: map
+                pose:
+                    position:
+                        x: 0.815548477931251
+                        y: -0.7515952102717546
+                        z: 0.6082673520391061
+                    orientation:
+                        x: -0.0006039200934903616
+                        y: 0.0009935296803737891
+                        z: 0.0011008786532515124
+                        w: 0.9999987181219213
 
-        data example: 
-                    ---
-                    header:
-                        stamp:
-                            sec: 1731787676
-                            nanosec: 314306003
-                        frame_id: map
-                    pose:
-                        position:
-                            x: 0.815548477931251
-                            y: -0.7515952102717546
-                            z: 0.6082673520391061
-                        orientation:
-                            x: -0.0006039200934903616
-                            y: 0.0009935296803737891
-                            z: 0.0011008786532515124
-                            w: 0.9999987181219213
-
-                    ---
+        Returns:
+            None
 
         """
         rslg(self,f'Launching random false data into pose measures')
@@ -138,10 +148,8 @@ class fdianode(Node):
         """This function  marks the stop to the attack with a boolean value establishment
 
         Parameters:
-
-        self: Node, the node used to perform the activities.
-        request: Dict, the request
-        response:  Dict, the response
+            request: Dict, the request
+            response:  Dict, the response
 
         """
         response.message = f"Stopped"

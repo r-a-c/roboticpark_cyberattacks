@@ -58,23 +58,26 @@ class fdianode(Node):
         """This function  injects messagges into one topic, decided by the user who invokes the node
         However, this function is no portable. It will send always the same type of message: sensor_msgs/msg/Range
 
-        Parameters:
+        DataExample:
+            The following is an example of the message data sent by this function:
 
-        self: Node, the node used to perform the activities.
+            .. code-block:: yaml
 
-        data example: 
-                    ---
-                    header:
-                    stamp:
-                        sec: 0
-                        nanosec: 0
-                    frame_id: range_left
-                    radiation_type: 1
-                    field_of_view: 1.5707999467849731
-                    min_range: 0.0
-                    max_range: 2.0
-                    range: 1.470906376838684
-                    ---
+                ---
+                header:
+                stamp:
+                    sec: 0
+                    nanosec: 0
+                frame_id: range_left
+                radiation_type: 1
+                field_of_view: 1.5707999467849731
+                min_range: 0.0
+                max_range: 2.0
+                range: 1.470906376838684
+                ---
+
+        Returns:
+            None
 
         """
         rslg(self,f'Launching random false data into measures')
@@ -101,10 +104,8 @@ class fdianode(Node):
         """This function  marks the stop to the attack with a boolean value establishment
 
         Parameters:
-
-        self: Node, the node used to perform the activities.
-        request: Dict, the request
-        response:  Dict, the response
+            request: Dict, the request
+            response:  Dict, the response
 
         """
         response.message = f"Stopped"

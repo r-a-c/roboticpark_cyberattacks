@@ -29,9 +29,8 @@ class replynodeFake(Node):
         In this case we know exactly the type of the node we are going to launch. 
 
         Parameters:
-
-        request: Dict, the request
-        response:  Dict, the response
+            request: Dict, the request
+            response:  Dict, the response
 
         """
         rslg(self,f'Launching node...')
@@ -54,15 +53,6 @@ class replynodeFake(Node):
                             ],
                             respawn=True
                         )
-        # self.impersonateNodeDescription = Node(
-        #                     node_name=self.impersonateNodeName,
-        #                     parameter_overrides=[
-     
-        #                         'name': 'dron08',
-        #                             'use_sim_time': False,
-        #                         'set_robot_state_publisher': False,
-        #                     ]
-        #                 )
 
         self.launch_service.include_launch_description(
             launch.LaunchDescription([self.impersonateNodeDescription])

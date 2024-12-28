@@ -1,0 +1,1047 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>roboticpark_cyberattacks package &mdash; documentación de RoboticPark CyberAttacks - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="roboticpark_cyberattacks" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            RoboticPark CyberAttacks
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">roboticpark_cyberattacks</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">roboticpark_cyberattacks package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.covertattack_fake_node">roboticpark_cyberattacks.covertattack_fake_node module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake"><code class="docutils literal notranslate"><span class="pre">covertnodeFake</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.covertattack_fake_node.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.dosattack">roboticpark_cyberattacks.dosattack module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.checkService"><code class="docutils literal notranslate"><span class="pre">checkService()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosFillService"><code class="docutils literal notranslate"><span class="pre">dosFillService()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosFillServiceAux"><code class="docutils literal notranslate"><span class="pre">dosFillServiceAux()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosSendPing"><code class="docutils literal notranslate"><span class="pre">dosSendPing()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosSendPingAux"><code class="docutils literal notranslate"><span class="pre">dosSendPingAux()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageAuxTCP"><code class="docutils literal notranslate"><span class="pre">dosSendRandomGarbageAuxTCP()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageAuxUDP"><code class="docutils literal notranslate"><span class="pre">dosSendRandomGarbageAuxUDP()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageTCP"><code class="docutils literal notranslate"><span class="pre">dosSendRandomGarbageTCP()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageUDP"><code class="docutils literal notranslate"><span class="pre">dosSendRandomGarbageUDP()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.dosnode"><code class="docutils literal notranslate"><span class="pre">dosnode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.dosattack_scan">roboticpark_cyberattacks.dosattack_scan module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack_scan.scan_tcp_ports"><code class="docutils literal notranslate"><span class="pre">scan_tcp_ports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack_scan.scan_udp_port"><code class="docutils literal notranslate"><span class="pre">scan_udp_port()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.dosattack_scan.scan_udp_ports"><code class="docutils literal notranslate"><span class="pre">scan_udp_ports()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.fdiaattack_pose">roboticpark_cyberattacks.fdiaattack_pose module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode"><code class="docutils literal notranslate"><span class="pre">fdianode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.fdiaattack_pose.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.fdiaattack_range">roboticpark_cyberattacks.fdiaattack_range module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode"><code class="docutils literal notranslate"><span class="pre">fdianode</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.fdiaattack_range.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.logcapturer">roboticpark_cyberattacks.logcapturer module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.logcapturer.logcapturer"><code class="docutils literal notranslate"><span class="pre">logcapturer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.logcapturer.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.logcapturer.subscribe_to_topic"><code class="docutils literal notranslate"><span class="pre">subscribe_to_topic()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.replyattack">roboticpark_cyberattacks.replyattack module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.replyattack.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.replyattack.replynode"><code class="docutils literal notranslate"><span class="pre">replynode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.replyattack_fake_node">roboticpark_cyberattacks.replyattack_fake_node module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.replyattack_fake_node.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.replyattack_fake_node.replynodeFake"><code class="docutils literal notranslate"><span class="pre">replynodeFake</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.sparseattack">roboticpark_cyberattacks.sparseattack module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.sparseattack.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.sparseattack.sparsenode"><code class="docutils literal notranslate"><span class="pre">sparsenode</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.unused_utils">roboticpark_cyberattacks.unused_utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.unused_utils.checkobjective"><code class="docutils literal notranslate"><span class="pre">checkobjective()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.unused_utils.getNodeList"><code class="docutils literal notranslate"><span class="pre">getNodeList()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.unused_utils.get_node_list"><code class="docutils literal notranslate"><span class="pre">get_node_list()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.unused_utils.get_node_list2"><code class="docutils literal notranslate"><span class="pre">get_node_list2()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks.utils">roboticpark_cyberattacks.utils module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.utils.fill_msg_with_random_values"><code class="docutils literal notranslate"><span class="pre">fill_msg_with_random_values()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.utils.import_message_type"><code class="docutils literal notranslate"><span class="pre">import_message_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.utils.printargs"><code class="docutils literal notranslate"><span class="pre">printargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#roboticpark_cyberattacks.utils.rslg"><code class="docutils literal notranslate"><span class="pre">rslg()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-roboticpark_cyberattacks">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">RoboticPark CyberAttacks</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">roboticpark_cyberattacks</a></li>
+      <li class="breadcrumb-item active">roboticpark_cyberattacks package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/source/roboticpark_cyberattacks.rst.txt" rel="nofollow"> Ver código fuente de la página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="roboticpark-cyberattacks-package">
+<h1>roboticpark_cyberattacks package<a class="headerlink" href="#roboticpark-cyberattacks-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-roboticpark_cyberattacks.covertattack_fake_node">
+<span id="roboticpark-cyberattacks-covertattack-fake-node-module"></span><h2>roboticpark_cyberattacks.covertattack_fake_node module<a class="headerlink" href="#module-roboticpark_cyberattacks.covertattack_fake_node" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.covertattack_fake_node.</span></span><span class="sig-name descname"><span class="pre">covertnodeFake</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/covertattack_fake_node.html#covertnodeFake"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.impersonateNodeDescription">
+<span class="sig-name descname"><span class="pre">impersonateNodeDescription</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.impersonateNodeDescription" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.impersonateNodeName">
+<span class="sig-name descname"><span class="pre">impersonateNodeName</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.impersonateNodeName" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.launchImpersonatedNode">
+<span class="sig-name descname"><span class="pre">launchImpersonatedNode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/covertattack_fake_node.html#covertnodeFake.launchImpersonatedNode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.launchImpersonatedNode" title="Link to this definition"></a></dt>
+<dd><p>This function  launchs a node that mimics the original one.
+In this case we know exactly the type of the node we are going to launch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.launch_aux_node">
+<span class="sig-name descname"><span class="pre">launch_aux_node</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/covertattack_fake_node.html#covertnodeFake.launch_aux_node"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.covertattack_fake_node.covertnodeFake.launch_aux_node" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.covertattack_fake_node.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.covertattack_fake_node.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/covertattack_fake_node.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.covertattack_fake_node.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.dosattack">
+<span id="roboticpark-cyberattacks-dosattack-module"></span><h2>roboticpark_cyberattacks.dosattack module<a class="headerlink" href="#module-roboticpark_cyberattacks.dosattack" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.checkService">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">checkService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#checkService"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.checkService" title="Link to this definition"></a></dt>
+<dd><p>Checks if the Node is available. Otherwise, it kills the execution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> – Node The node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosFillService">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosFillService</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mydosnode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeObjectiveServer</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nodeObjectiveType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosFillService"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosFillService" title="Link to this definition"></a></dt>
+<dd><p>Launches an attack against ROS2 services. This functions organizes the process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mydosnode</strong> – Node, The node we use to orchestrate the attack</p></li>
+<li><p><strong>nodeObjectiveServer</strong> – String, the service we are goint to attack</p></li>
+<li><p><strong>nodeObjectiveType</strong> – String, the type of the service we are goint to attack</p></li>
+<li><p><strong>workers</strong> – The number of simultaneous attacks we are going to launch.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosFillServiceAux">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosFillServiceAux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sclient</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosFillServiceAux"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosFillServiceAux" title="Link to this definition"></a></dt>
+<dd><p>Launches an attack against ROS2 services. This functions makes the actual connection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sclient</strong> – Client, this is the client connected to the objective node</p></li>
+<li><p><strong>request</strong> – Multiform. Can be any type of ROS2 request type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosSendPing">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosSendPing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ipdest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">workers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosSendPing"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosSendPing" title="Link to this definition"></a></dt>
+<dd><p>Launches a ping attack against the machine objective. This functions organizes the process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ipdest</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>workers</strong> – The number of simultaneous attacks we are going to launch.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosSendPingAux">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosSendPingAux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosSendPingAux"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosSendPingAux" title="Link to this definition"></a></dt>
+<dd><p>Launches a ping attack against the machine objective. This functions makes the actual work of sending ping</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ip</strong> – String, The ip to attack to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosSendRandomGarbageAuxTCP">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosSendRandomGarbageAuxTCP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socketObject</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosSendRandomGarbageAuxTCP"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageAuxTCP" title="Link to this definition"></a></dt>
+<dd><p>Launches garbage into selected ports  via TCP. This functions makes the actual work of sending garbage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node, The node</p></li>
+<li><p><strong>ip</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>port</strong> – String, the port which will be attacked.</p></li>
+<li><p><strong>socketObject</strong> – Socket, the needed socket</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosSendRandomGarbageAuxUDP">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosSendRandomGarbageAuxUDP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socketObject</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosSendRandomGarbageAuxUDP"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageAuxUDP" title="Link to this definition"></a></dt>
+<dd><p>Launches garbage into selected ports  via UDP. This functions makes the actual work of sending garbage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node, The node</p></li>
+<li><p><strong>ip</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>port</strong> – String, the port which will be attacked.</p></li>
+<li><p><strong>socketObject</strong> – Socket, the needed socket</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosSendRandomGarbageTCP">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosSendRandomGarbageTCP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ipdest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socketObject</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosSendRandomGarbageTCP"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageTCP" title="Link to this definition"></a></dt>
+<dd><p>Launches garbage into selected ports via TCP. This functions organizes the process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node, The node</p></li>
+<li><p><strong>ipdest</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>ports</strong> – List, A list of ports</p></li>
+<li><p><strong>socketObject</strong> – Socket, the needed socket</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosSendRandomGarbageUDP">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosSendRandomGarbageUDP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ipdest</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">socketObject</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosSendRandomGarbageUDP"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosSendRandomGarbageUDP" title="Link to this definition"></a></dt>
+<dd><p>Launches garbage into selected ports via UDP. This functions organizes the process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node, The node</p></li>
+<li><p><strong>ipdest</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>ports</strong> – List, A list of ports</p></li>
+<li><p><strong>socketObject</strong> – Socket, the needed socket</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.dosnode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">dosnode</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#dosnode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.dosnode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.dosattack_scan">
+<span id="roboticpark-cyberattacks-dosattack-scan-module"></span><h2>roboticpark_cyberattacks.dosattack_scan module<a class="headerlink" href="#module-roboticpark_cyberattacks.dosattack_scan" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack_scan.scan_tcp_ports">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack_scan.</span></span><span class="sig-name descname"><span class="pre">scan_tcp_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack_scan.html#scan_tcp_ports"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack_scan.scan_tcp_ports" title="Link to this definition"></a></dt>
+<dd><p>Searchs for TCP open ports against a machine</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ip</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>ports</strong> – List, A list of ports</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>List, a list of open ports.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack_scan.scan_udp_port">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack_scan.</span></span><span class="sig-name descname"><span class="pre">scan_udp_port</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack_scan.html#scan_udp_port"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack_scan.scan_udp_port" title="Link to this definition"></a></dt>
+<dd><p>Searchs for UDP open ports against a machine. This functions makes the actual work.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ip</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>port</strong> – String, the actual port scanned.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>None if no response, else the port String.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.dosattack_scan.scan_udp_ports">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.dosattack_scan.</span></span><span class="sig-name descname"><span class="pre">scan_udp_ports</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ports</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/dosattack_scan.html#scan_udp_ports"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.dosattack_scan.scan_udp_ports" title="Link to this definition"></a></dt>
+<dd><p>Searchs for UDP open ports against a machine. This functions organizes the work.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ip</strong> – String, The ip to attack to.</p></li>
+<li><p><strong>ports</strong> – List, A list of ports</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>List, a list of open ports.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.fdiaattack_pose">
+<span id="roboticpark-cyberattacks-fdiaattack-pose-module"></span><h2>roboticpark_cyberattacks.fdiaattack_pose module<a class="headerlink" href="#module-roboticpark_cyberattacks.fdiaattack_pose" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.fdiaattack_pose.</span></span><span class="sig-name descname"><span class="pre">fdianode</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_pose.html#fdianode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.continueAttack">
+<span class="sig-name descname"><span class="pre">continueAttack</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.continueAttack" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.fdiainject">
+<span class="sig-name descname"><span class="pre">fdiainject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_pose.html#fdianode.fdiainject"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.fdiainject" title="Link to this definition"></a></dt>
+<dd><p>Injects messages into a topic chosen by the user.</p>
+<p>This function  injects messagges into one topic, decided by the user who invokes the node
+However, this function is no portable. It will send always the same type of message: geometry_msgs/PoseStamped Message</p>
+<dl>
+<dt>DataExample:</dt><dd><p>The following is an example of the message data sent by this function:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">header</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">stamp</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">sec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1731787676</span>
+<span class="w">        </span><span class="nt">nanosec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">314306003</span>
+<span class="w">    </span><span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">map</span>
+<span class="nt">pose</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">position</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.815548477931251</span>
+<span class="w">        </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.7515952102717546</span>
+<span class="w">        </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.6082673520391061</span>
+<span class="w">    </span><span class="nt">orientation</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">x</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-0.0006039200934903616</span>
+<span class="w">        </span><span class="nt">y</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0009935296803737891</span>
+<span class="w">        </span><span class="nt">z</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0011008786532515124</span>
+<span class="w">        </span><span class="nt">w</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.9999987181219213</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.fdiainjectbridge">
+<span class="sig-name descname"><span class="pre">fdiainjectbridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_pose.html#fdianode.fdiainjectbridge"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.fdiainjectbridge" title="Link to this definition"></a></dt>
+<dd><p>This function  acts as a brige to launch the new process via threading</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.frameid">
+<span class="sig-name descname"><span class="pre">frameid</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.frameid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.orw">
+<span class="sig-name descname"><span class="pre">orw</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.orw" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.orx">
+<span class="sig-name descname"><span class="pre">orx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.orx" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.ory">
+<span class="sig-name descname"><span class="pre">ory</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.ory" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.orz">
+<span class="sig-name descname"><span class="pre">orz</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.orz" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.posx">
+<span class="sig-name descname"><span class="pre">posx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.posx" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.posy">
+<span class="sig-name descname"><span class="pre">posy</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.posy" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.posz">
+<span class="sig-name descname"><span class="pre">posz</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.posz" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.publisher">
+<span class="sig-name descname"><span class="pre">publisher</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.publisher" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.rangeEnd">
+<span class="sig-name descname"><span class="pre">rangeEnd</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.rangeEnd" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.rangeStart">
+<span class="sig-name descname"><span class="pre">rangeStart</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.rangeStart" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.stopfdiainject">
+<span class="sig-name descname"><span class="pre">stopfdiainject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_pose.html#fdianode.stopfdiainject"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.stopfdiainject" title="Link to this definition"></a></dt>
+<dd><p>This function  marks the stop to the attack with a boolean value establishment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.fdianode.topic">
+<span class="sig-name descname"><span class="pre">topic</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.fdianode.topic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_pose.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.fdiaattack_pose.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_pose.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_pose.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.fdiaattack_range">
+<span id="roboticpark-cyberattacks-fdiaattack-range-module"></span><h2>roboticpark_cyberattacks.fdiaattack_range module<a class="headerlink" href="#module-roboticpark_cyberattacks.fdiaattack_range" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.fdiaattack_range.</span></span><span class="sig-name descname"><span class="pre">fdianode</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_range.html#fdianode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.continueAttack">
+<span class="sig-name descname"><span class="pre">continueAttack</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.continueAttack" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.fdiainject">
+<span class="sig-name descname"><span class="pre">fdiainject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_range.html#fdianode.fdiainject"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.fdiainject" title="Link to this definition"></a></dt>
+<dd><p>This function  injects messagges into one topic, decided by the user who invokes the node
+However, this function is no portable. It will send always the same type of message: sensor_msgs/msg/Range</p>
+<dl>
+<dt>DataExample:</dt><dd><p>The following is an example of the message data sent by this function:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">header</span><span class="p">:</span>
+<span class="nt">stamp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">sec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">    </span><span class="nt">nanosec</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">frame_id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">range_left</span>
+<span class="nt">radiation_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">field_of_view</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.5707999467849731</span>
+<span class="nt">min_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0</span>
+<span class="nt">max_range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.0</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.470906376838684</span>
+<span class="nn">---</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Devuelve<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.fdiainjectbridge">
+<span class="sig-name descname"><span class="pre">fdiainjectbridge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_range.html#fdianode.fdiainjectbridge"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.fdiainjectbridge" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.frameid">
+<span class="sig-name descname"><span class="pre">frameid</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.frameid" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.publisher">
+<span class="sig-name descname"><span class="pre">publisher</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.publisher" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.rangeEnd">
+<span class="sig-name descname"><span class="pre">rangeEnd</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.rangeEnd" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.rangeStart">
+<span class="sig-name descname"><span class="pre">rangeStart</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0.0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.rangeStart" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.stopfdiainject">
+<span class="sig-name descname"><span class="pre">stopfdiainject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_range.html#fdianode.stopfdiainject"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.stopfdiainject" title="Link to this definition"></a></dt>
+<dd><p>This function  marks the stop to the attack with a boolean value establishment</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.fdianode.topic">
+<span class="sig-name descname"><span class="pre">topic</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.fdianode.topic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.fdiaattack_range.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.fdiaattack_range.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/fdiaattack_range.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.fdiaattack_range.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.logcapturer">
+<span id="roboticpark-cyberattacks-logcapturer-module"></span><h2>roboticpark_cyberattacks.logcapturer module<a class="headerlink" href="#module-roboticpark_cyberattacks.logcapturer" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.logcapturer.logcapturer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.logcapturer.</span></span><span class="sig-name descname"><span class="pre">logcapturer</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/logcapturer.html#logcapturer"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.logcapturer.logcapturer" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.logcapturer.logcapturer.loggerToFile">
+<span class="sig-name descname"><span class="pre">loggerToFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/logcapturer.html#logcapturer.loggerToFile"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.logcapturer.logcapturer.loggerToFile" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.logcapturer.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.logcapturer.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/logcapturer.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.logcapturer.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.logcapturer.subscribe_to_topic">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.logcapturer.</span></span><span class="sig-name descname"><span class="pre">subscribe_to_topic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/logcapturer.html#subscribe_to_topic"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.logcapturer.subscribe_to_topic" title="Link to this definition"></a></dt>
+<dd><p>This function  subscribes a node to a topic</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node, the node used to perform the activities.</p></li>
+<li><p><strong>topic</strong> – String, the topic to subscribe.</p></li>
+<li><p><strong>msg_type</strong> – Type of the messagge will be subscribed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.replyattack">
+<span id="roboticpark-cyberattacks-replyattack-module"></span><h2>roboticpark_cyberattacks.replyattack module<a class="headerlink" href="#module-roboticpark_cyberattacks.replyattack" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.replyattack.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.replyattack.</span></span><span class="sig-name descname"><span class="pre">replynode</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack.html#replynode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.logFile">
+<span class="sig-name descname"><span class="pre">logFile</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.logFile" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.messaggesList">
+<span class="sig-name descname"><span class="pre">messaggesList</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.messaggesList" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.publishStoredData">
+<span class="sig-name descname"><span class="pre">publishStoredData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack.html#replynode.publishStoredData"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.publishStoredData" title="Link to this definition"></a></dt>
+<dd><p>This function  publish the data stored into the topic</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.publishStoredDataFromFile">
+<span class="sig-name descname"><span class="pre">publishStoredDataFromFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack.html#replynode.publishStoredDataFromFile"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.publishStoredDataFromFile" title="Link to this definition"></a></dt>
+<dd><p>This function  publish the data stored into the topic, using a file as a source</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.replyAmount">
+<span class="sig-name descname"><span class="pre">replyAmount</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.replyAmount" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.replyTopic">
+<span class="sig-name descname"><span class="pre">replyTopic</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.replyTopic" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.replyTopicType">
+<span class="sig-name descname"><span class="pre">replyTopicType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.replyTopicType" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.replyTopicTypeValue">
+<span class="sig-name descname"><span class="pre">replyTopicTypeValue</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.replyTopicTypeValue" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.save_messagges">
+<span class="sig-name descname"><span class="pre">save_messagges</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack.html#replynode.save_messagges"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.save_messagges" title="Link to this definition"></a></dt>
+<dd><p>This function  save messagess from the selected topic to a list in memory
+It creates a subscription to a topic, and then stores the needed amount of messagges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.save_messagges_aux">
+<span class="sig-name descname"><span class="pre">save_messagges_aux</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack.html#replynode.save_messagges_aux"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.save_messagges_aux" title="Link to this definition"></a></dt>
+<dd><p>This function  save a requested amount of messagges to a list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>msg</strong> – String, the string we are goint to store</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack.replynode.save_to_file">
+<span class="sig-name descname"><span class="pre">save_to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack.html#replynode.save_to_file"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack.replynode.save_to_file" title="Link to this definition"></a></dt>
+<dd><p>This function  save a the list messaggesList to a file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.replyattack_fake_node">
+<span id="roboticpark-cyberattacks-replyattack-fake-node-module"></span><h2>roboticpark_cyberattacks.replyattack_fake_node module<a class="headerlink" href="#module-roboticpark_cyberattacks.replyattack_fake_node" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack_fake_node.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.replyattack_fake_node.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack_fake_node.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack_fake_node.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack_fake_node.replynodeFake">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.replyattack_fake_node.</span></span><span class="sig-name descname"><span class="pre">replynodeFake</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack_fake_node.html#replynodeFake"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack_fake_node.replynodeFake" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.impersonateNodeDescription">
+<span class="sig-name descname"><span class="pre">impersonateNodeDescription</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.impersonateNodeDescription" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.impersonateNodeName">
+<span class="sig-name descname"><span class="pre">impersonateNodeName</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.impersonateNodeName" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.launchImpersonatedNode">
+<span class="sig-name descname"><span class="pre">launchImpersonatedNode</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack_fake_node.html#replynodeFake.launchImpersonatedNode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.launchImpersonatedNode" title="Link to this definition"></a></dt>
+<dd><p>This function  launchs a node that mimics the original one.
+In this case we know exactly the type of the node we are going to launch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.launch_aux_node">
+<span class="sig-name descname"><span class="pre">launch_aux_node</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/replyattack_fake_node.html#replynodeFake.launch_aux_node"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.replyattack_fake_node.replynodeFake.launch_aux_node" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.sparseattack">
+<span id="roboticpark-cyberattacks-sparseattack-module"></span><h2>roboticpark_cyberattacks.sparseattack module<a class="headerlink" href="#module-roboticpark_cyberattacks.sparseattack" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.main">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.sparseattack.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/sparseattack.html#main"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.main" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.sparseattack.</span></span><span class="sig-name descname"><span class="pre">sparsenode</span></span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/sparseattack.html#sparsenode"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Node</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.launch_attack">
+<span class="sig-name descname"><span class="pre">launch_attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">topic</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">topicType</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/sparseattack.html#sparsenode.launch_attack"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.launch_attack" title="Link to this definition"></a></dt>
+<dd><p>This function  launch the sparse attack itself. It publishes msgs into the desired topics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>topic</strong> – String, the desired topic</p></li>
+<li><p><strong>topicType</strong> – The type of the topic</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.launch_attack_wrapper">
+<span class="sig-name descname"><span class="pre">launch_attack_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">response</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/sparseattack.html#sparsenode.launch_attack_wrapper"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.launch_attack_wrapper" title="Link to this definition"></a></dt>
+<dd><p>This function  save messagess from the selected topic to a list in memory
+It creates a subscription to a topic, and then stores the needed amount of messagges</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>request</strong> – Dict, the request</p></li>
+<li><p><strong>response</strong> – Dict, the response</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseDoubleRangeEnd">
+<span class="sig-name descname"><span class="pre">sparseDoubleRangeEnd</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseDoubleRangeEnd" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseDoubleRangeStart">
+<span class="sig-name descname"><span class="pre">sparseDoubleRangeStart</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseDoubleRangeStart" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseFrameId">
+<span class="sig-name descname"><span class="pre">sparseFrameId</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseFrameId" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseIntRangeEnd">
+<span class="sig-name descname"><span class="pre">sparseIntRangeEnd</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseIntRangeEnd" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseIntRangeStart">
+<span class="sig-name descname"><span class="pre">sparseIntRangeStart</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseIntRangeStart" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseTimeRangeEnd">
+<span class="sig-name descname"><span class="pre">sparseTimeRangeEnd</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseTimeRangeEnd" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseTimeRangeStart">
+<span class="sig-name descname"><span class="pre">sparseTimeRangeStart</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseTimeRangeStart" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseTopics">
+<span class="sig-name descname"><span class="pre">sparseTopics</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseTopics" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.sparseattack.sparsenode.sparseTopicsType">
+<span class="sig-name descname"><span class="pre">sparseTopicsType</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#roboticpark_cyberattacks.sparseattack.sparsenode.sparseTopicsType" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.unused_utils">
+<span id="roboticpark-cyberattacks-unused-utils-module"></span><h2>roboticpark_cyberattacks.unused_utils module<a class="headerlink" href="#module-roboticpark_cyberattacks.unused_utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.unused_utils.checkobjective">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.unused_utils.</span></span><span class="sig-name descname"><span class="pre">checkobjective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/unused_utils.html#checkobjective"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.unused_utils.checkobjective" title="Link to this definition"></a></dt>
+<dd><p>Check the objective of the attack, passed by parameter by Ros
+ros2 run roboticpark_cyberattacks dosattack  –ros-args -p dosobjective:=loquesea
+It does not work to check the existance of a node because a Node is not able to check the full graph.
+It only sees a group of nodes in any interaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> (<em>Node</em>) – The node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.unused_utils.getNodeList">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.unused_utils.</span></span><span class="sig-name descname"><span class="pre">getNodeList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/unused_utils.html#getNodeList"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.unused_utils.getNodeList" title="Link to this definition"></a></dt>
+<dd><p>See checkobjective, this function could be a method for that function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.unused_utils.get_node_list">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.unused_utils.</span></span><span class="sig-name descname"><span class="pre">get_node_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/unused_utils.html#get_node_list"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.unused_utils.get_node_list" title="Link to this definition"></a></dt>
+<dd><p>See checkobjective, this function could be a method for that function</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.unused_utils.get_node_list2">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.unused_utils.</span></span><span class="sig-name descname"><span class="pre">get_node_list2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/unused_utils.html#get_node_list2"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.unused_utils.get_node_list2" title="Link to this definition"></a></dt>
+<dd><p>See checkobjective, this function could be a method for that function</p>
+</dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks.utils">
+<span id="roboticpark-cyberattacks-utils-module"></span><h2>roboticpark_cyberattacks.utils module<a class="headerlink" href="#module-roboticpark_cyberattacks.utils" title="Link to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.utils.fill_msg_with_random_values">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.utils.</span></span><span class="sig-name descname"><span class="pre">fill_msg_with_random_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double_range_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">double_range_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int_range_start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">int_range_end</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">frame_id_string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/utils.html#fill_msg_with_random_values"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.utils.fill_msg_with_random_values" title="Link to this definition"></a></dt>
+<dd><p>Finds numeric values in a msg and edits them according to params’s range, randomly. Also sets frame to «map»</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> – ROS2 message, any</p></li>
+<li><p><strong>double_range_start</strong> – range for double values</p></li>
+<li><p><strong>double_range_end</strong> – range for double values</p></li>
+<li><p><strong>int_range_start</strong> – range for int values</p></li>
+<li><p><strong>int_range_end</strong> – range for int values</p></li>
+<li><p><strong>frame_id_string</strong> – frame id string</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>Formatted msg</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.utils.import_message_type">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.utils.</span></span><span class="sig-name descname"><span class="pre">import_message_type</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg_type_str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/utils.html#import_message_type"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.utils.import_message_type" title="Link to this definition"></a></dt>
+<dd><p>This function searchs for the class object needed accoding to the params.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node, the node used to perform the activities.</p></li>
+<li><p><strong>msg_type_str</strong> – String, the type of the messagge, as a string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Devuelve<span class="colon">:</span></dt>
+<dd class="field-even"><p>None if no class if found else the objective class.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.utils.printargs">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.utils.</span></span><span class="sig-name descname"><span class="pre">printargs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/utils.html#printargs"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.utils.printargs" title="Link to this definition"></a></dt>
+<dd><p>Prints every param present in the node and its values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>node</strong> – Node The node</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="roboticpark_cyberattacks.utils.rslg">
+<span class="sig-prename descclassname"><span class="pre">roboticpark_cyberattacks.utils.</span></span><span class="sig-name descname"><span class="pre">rslg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/roboticpark_cyberattacks/utils.html#rslg"><span class="viewcode-link"><span class="pre">[fuente]</span></span></a><a class="headerlink" href="#roboticpark_cyberattacks.utils.rslg" title="Link to this definition"></a></dt>
+<dd><p>Prints info into node’s log</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parámetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>node</strong> – Node The node</p></li>
+<li><p><strong>msg</strong> – String, the message</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-roboticpark_cyberattacks">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-roboticpark_cyberattacks" title="Link to this heading"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="modules.html" class="btn btn-neutral float-left" title="roboticpark_cyberattacks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2024, Raúl Álvarez de Celis.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

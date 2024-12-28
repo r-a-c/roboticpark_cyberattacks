@@ -27,13 +27,12 @@ class logcapturer(Node):
     #        rslg(self,f"Mensaje recibido: {msg}")
 
 def subscribe_to_topic(node,topic,msg_type):
-    """This function  subscribes a node to a topi 
+    """This function  subscribes a node to a topic
 
        Parameters:
-
-       node: Node, the node used to perform the activities.
-       topic: String, the topic to subscribe.
-       msg_type: Type of the messagge will be subscribed.
+        node: Node, the node used to perform the activities.
+        topic: String, the topic to subscribe.
+        msg_type: Type of the messagge will be subscribed.
 
     """
     node.subscription = node.create_subscription( msg_type, topic, node.loggerToFile, 10)
@@ -59,7 +58,7 @@ def main():
     try:
         subscribe_to_topic(mylogcapturer,topicToLog,topicType)
     except Exception as e:
-        rslg(logcapturer,f"Some king of problem subscribing the topic {e}")
+        rslg(logcapturer,f"Some kind of problem subscribing the topic {e}")
         sys.exit()
 
 

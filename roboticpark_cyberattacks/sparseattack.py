@@ -60,10 +60,8 @@ class sparsenode(Node):
         It creates a subscription to a topic, and then stores the needed amount of messagges
 
         Parameters:
-
-        self: Node, the node used to perform the activities.
-        request: Dict, the request
-        response:  Dict, the response
+            request: Dict, the request
+            response:  Dict, the response
 
         """
         response.message = f"Sent messagges to topic/sensors "
@@ -80,10 +78,8 @@ class sparsenode(Node):
         """This function  launch the sparse attack itself. It publishes msgs into the desired topics.
 
         Parameters:
-
-        self: Node, the node used to perform the activities.
-        topic: String, the desired topic
-        topicType:  The type of the topic
+            topic: String, the desired topic
+            topicType:  The type of the topic
 
         """
         pid = threading.get_ident()

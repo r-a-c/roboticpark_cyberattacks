@@ -58,10 +58,8 @@ class replynode(Node):
         It creates a subscription to a topic, and then stores the needed amount of messagges
 
         Parameters:
-
-        self: Node, the node used to perform the activities.
-        request: Dict, the request
-        response:  Dict, the response
+            request: Dict, the request
+            response:  Dict, the response
 
         """
         response.message = f"Data copied to list"
@@ -75,9 +73,7 @@ class replynode(Node):
         """This function  save a requested amount of messagges to a list
 
         Parameters:
-
-        self: Node, the node used to perform the activities.
-        msg: String, the string we are goint to store
+            msg: String, the string we are goint to store
 
         """
         if not len(self.messaggesList) >= self.replyAmount:
@@ -88,10 +84,8 @@ class replynode(Node):
         """This function  save a the list messaggesList to a file
 
         Parameters:
-
-        self: Node, the node used to perform the activities.
-        request: Dict, the request
-        response:  Dict, the response
+            request: Dict, the request
+            response:  Dict, the response
 
         """
         response.message = f"Data copied to file {self.logFile}"
@@ -108,10 +102,9 @@ class replynode(Node):
         """This function  publish the data stored into the topic
 
         Parameters:
+            request: Dict, the request
+            response:  Dict, the response
 
-        self: Node, the node used to perform the activities.
-        request: Dict, the request
-        response:  Dict, the response
         """
         
         response.message = "Data replied succesfully in this execution"
@@ -129,10 +122,9 @@ class replynode(Node):
         """This function  publish the data stored into the topic, using a file as a source
 
         Parameters:
+            request: Dict, the request
+            response:  Dict, the response
 
-        self: Node, the node used to perform the activities.
-        request: Dict, the request
-        response:  Dict, the response
         """
         
         response.message = "Data replied succesfully in this execution, source is a file"

