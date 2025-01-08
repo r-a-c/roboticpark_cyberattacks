@@ -218,8 +218,8 @@ def main():
 
 
     else:
-        mydosnode.get_logger().info(f'Regular dos attack, we can choose between ping and random garbage:  {dostype} was chosen')
-
+        rslg(mydosnode,f'Regular dos attack, we can choose between ping and random garbage:  {dostype} was chosen')
+        
         if dostype == 'dos_port_garbage':
             if dosprotocol == 'tcp':
                 rslg(mydosnode,'Attacking tcp ports')
